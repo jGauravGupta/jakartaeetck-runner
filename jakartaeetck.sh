@@ -130,7 +130,7 @@ printf  "
 killjava "com.sun.enterprise.admin.cli.AdminMain"
 
 ##### installCTS.sh starts here #####
-cat ${TS_HOME}/bin/ts.jte | sed "s/-Doracle.jdbc.mapDateToTimestamp/-Doracle.jdbc.mapDateToTimestamp -Djava.security.manager/"  > ts.save
+cat ${TS_HOME}/bin/ts.jte | sed "s/-Doracle.jdbc.mapDateToTimestamp/-Doracle.jdbc.mapDateToTimestamp /"  > ts.save
 cp ts.save $TS_HOME/bin/ts.jte
 ##### installCTS.sh ends here #####
 
@@ -298,7 +298,7 @@ echo "AS_JAVA=$JAVA_HOME_VI" >> ${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/con
 ${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${CTS_HOME}/change-admin-password.txt change-admin-password
 ${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
 ${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} version
-${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} create-jvm-options -Djava.security.manager
+${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} create-jvm-options
 #https://github.com/eclipse-ee4j/jakartaee-tck/issues/631
 if [[ ("$JDK" == "JDK11" || "$JDK" == "jdk11") &&  $test_suite == jstl ]]; then
   ${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} create-jvm-options -Djava.locale.providers=COMPAT
