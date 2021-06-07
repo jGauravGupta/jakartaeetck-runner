@@ -47,6 +47,7 @@ init_urls
 
 export CTS_HOME=$SCRIPTPATH/cts_home
 export WORKSPACE=$CTS_HOME/jakartaeetck
+export HARNESS_DEBUG=true
 
 echo "Cleaning and installing TCK"
 # kill any leftover glassfish/payara instances
