@@ -4,6 +4,8 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 init_urls
 
+export PORTING=$SCRIPTPATH/cditck-porting
+
 rm -rf $DIST
 mkdir -p $DIST
 
@@ -51,7 +53,7 @@ mvn --global-settings "${PORTING}/settings.xml" org.apache.maven.plugins:maven-i
 -Dsources=$TCK_ARTIFACTS/cdi-tck-impl-${CDI_TCK_VERSION}-sources.jar
 
 mvn --global-settings "${PORTING}/settings.xml" install:install-file \
--Dfile=$TCK_ARTIFACTS/cdi-tck-impl-${CDI_TCK_VERSION}-suite.xml \
+-Dfile=$PORTING/glassfish-tck-runner/src/test/tck20/tck-tests.xml \
 -DgroupId=${GROUP_ID} \
 -DartifactId=cdi-tck-impl \
 -Dversion=${CDI_TCK_VERSION} \
